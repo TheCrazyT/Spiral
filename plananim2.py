@@ -72,8 +72,6 @@ class RenderArea(QWidget):
             self.stopIt = True
             raise BaseException() from e
 
-        if(self.stopIt==False):
-            self.parent.framePos += 1
         self.parent.update()
         QApplication.processEvents()
         t = Timer(0.5, self.tick)
