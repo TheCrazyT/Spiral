@@ -22,8 +22,6 @@ class RenderArea(QWidget):
             self.painter.setRenderHint(QPainter.Antialiasing)
             self.painter.fillRect(event.rect(), QBrush(Qt.white))
         self.painter.save()
-        device = QPainterPath()
-        device.addEllipse(0.0, 0.0, 500.0, 500.0)
         K = 2
         B = K
         J = 0
@@ -97,17 +95,8 @@ class Window(QMainWindow):
         self.setLayout(layout)
 
     def anim(self):
-        #self.framePos = 1500
         t = Timer(0.01, self.originalRenderArea.tick)
         t.start()
-        #
-        #while framePos < 600:
-            #if(self.originalRenderArea.stopIt==False):
-            #   self.framePos += 1
-            #self.update()
-            #QApplication.processEvents()
-            #time.sleep(1)
-            #time.sleep((1.0-Speed/200.0)/10.0)
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
