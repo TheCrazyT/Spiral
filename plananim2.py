@@ -4,7 +4,7 @@ import math, signal, sys, time
 from threading import Timer
 from PyQt5.QtCore import QRect, QSize, Qt
 from PyQt5.QtGui import QPainter, QBrush, QPainterPath
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
 
 
 class RenderArea(QWidget):
@@ -34,24 +34,26 @@ class RenderArea(QWidget):
         B = K
         N = 1
         V = 0
-        D = 150
+        D = 400
         O = 1
 
         MX = D+10
         MY = D+10
         T = 10
         U = 0
+        E = 1
 
         while B>1:
-            G = (-O+90.0+360.0/(J/8)*(V+self.ctick))*(math.pi/180)
-            O *= 1.03
-            D -= T*0.05
+            G = (-O+90.0+360.0/(J/4)*((V+self.ctick)*E))*(math.pi/180)
+            O *= 1.00125
+            E *= 1.00512
+            D -= T*0.12
             px, py = MX + D*math.cos(G), MY + D*math.sin(G)
             color = Qt.black
             ctick = self.ctick
             if U == ctick:
                 color = Qt.blue
-            self.painter.fillRect(QRect(px,py,T,T*B), QBrush(color))
+            self.painter.fillRect(QRect(px,py,T*N,T*B), QBrush(color))
             B /= 1.004
             N *= 1.004
             V -= 1
@@ -83,7 +85,7 @@ class RenderArea(QWidget):
     def minimumSizeHint(self):
         return QSize(500, 500)
 
-class Window(QWidget):
+class Window(QMainWindow):
     speed              = 0.0
     framePos           = 1500
     originalRenderArea = None
@@ -113,4 +115,7 @@ if __name__ == '__main__':
     window = Window()
     window.show()
     window.anim()
+    window.move(0,0)
+    window.setFixedWidth(900)
+    window.setFixedHeight(900)
     sys.exit(app.exec_())
