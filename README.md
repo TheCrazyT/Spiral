@@ -12,9 +12,3 @@ Theory:
 ![step2](images/2.png "Step 2")
 
 ![step3](images/3.png "Step 3")
-
-Step 2 and 3 are actually work in progress.
-
-Some containers on the left should also be filled.
-
-But does not change the theory. (with enough depth-increase counter-clockwise it should negate the effect)

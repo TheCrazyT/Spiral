@@ -6,9 +6,10 @@
 ##       it normally needs to fill from bottom to top, so force-difference could be < 0 earlier.
 import math, signal, sys, time
 from threading import Timer
-from PyQt4.QtCore import *
-from PyQt4 import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5 import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 class VolRes:
     V1 = 0.0
